@@ -1,0 +1,2 @@
+actionlib_tutorials:eband_local_planner:hello:ira_laser_tools:lowpass_filter:new_bringup:sigint:simple_layers:simple_navigation_goals:udp_server:using_makers:yocs_velocity_smoother:yun_global_planner:yun_network:yun_obstacle_avoid
+-DCATKIN_DEVEL_PREFIX=/home/pepper/usst_ws/devel -DCMAKE_INSTALL_PREFIX=/home/pepper/usst_ws/install -G Unix Makefiles

@@ -1,0 +1,79 @@
+/*
+g++ json_test_2.cpp -ljson_linux-gcc-4.8_libmt -o json_test_2
+*/
+//json的key字符流按照地一个字母的大小排序
+
+#include <json/json.h>
+#include <string>
+#include <stdlib.h>
+#include <iostream>
+#include <fstream>
+#include <string.h>
+
+//#define READ 
+using namespace std;
+
+int main()
+{
+#ifdef READ
+    ifstream is;
+     is.open ("JsonText", std::ios::binary );
+      Json::Reader reader;
+      Json::Value root;
+      if(reader.parse(is,root))   ///root保存整个Json对象的value
+      {
+           if(!root["name"].isNull())
+           {
+               cout<<root["name"].asString()<<endl;    ///读取元素
+             Json::Value arrayObj = root["array"];
+             for(int i=0 ; i< arrayObj.size() ;i++)
+             {
+                 cout<<arrayObj[i].asString()<<endl;
+             }
+           }
+      }
+#else 
+
+      //string to char[]
+      Json::Value root;
+      Json::Value arrayObj;
+      Json::Value item;
+ 
+      root["AGVState"]["AGVID"] = "AGV1";  
+      root["AGVState"]["state"] = 0;
+      root["AGVState"]["power"] = 100;
+      root["AGVState"]["x"]  = 0;
+      root["AGVState"]["y"]  = 0;
+      root["AGVState"]["position"]  = 0;//-1默认位置
+      std::string out = root.toStyledString();   ///转换为json格式字符串
+      
+      int size = out.length();
+      cout << "string size : "<< size << endl;
+      
+      char json[size];
+      strcpy(json, out.data()); //c_str()返回带'\0'的字符串，data()只返回数据
+      
+      std::cout << json << std::endl;
+      
+      string s = "1234";
+      cout << "length of s :" << s.length() << endl;
+      
+      char* json_char = (char*)out;
+      cout << "json_char:" << endl << json_char << endl;
+
+#endif
+      return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

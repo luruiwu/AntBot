@@ -1,0 +1,8 @@
+prefix=/home/pepper/usst_ws/install
+
+Name: lowpass_filter
+Description: Description of lowpass_filter
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/pepper/usst_ws/install/lib 
+Requires: 

@@ -1,0 +1,8 @@
+prefix=/home/pepper/usst_ws/install
+
+Name: new_bringup
+Description: Description of new_bringup
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/pepper/usst_ws/install/lib 
+Requires: 

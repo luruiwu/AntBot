@@ -1,0 +1,8 @@
+prefix=/home/pepper/usst_ws/install
+
+Name: sigint
+Description: Description of sigint
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/pepper/usst_ws/install/lib 
+Requires: 

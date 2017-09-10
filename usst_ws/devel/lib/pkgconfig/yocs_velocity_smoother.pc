@@ -1,0 +1,8 @@
+prefix=/home/pepper/usst_ws/devel
+
+Name: yocs_velocity_smoother
+Description: Description of yocs_velocity_smoother
+Version: 0.9.1
+Cflags: -I/home/pepper/usst_ws/devel/include -I/home/pepper/usst_ws/src/yocs_velocity_smoother/include
+Libs: -L/home/pepper/usst_ws/devel/lib -lyocs_velocity_smoother_nodelet
+Requires: roscpp pluginlib nodelet ecl_threads dynamic_reconfigure geometry_msgs nav_msgs

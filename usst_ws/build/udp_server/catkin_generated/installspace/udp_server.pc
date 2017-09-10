@@ -1,0 +1,8 @@
+prefix=/home/pepper/usst_ws/install
+
+Name: udp_server
+Description: Description of udp_server
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/pepper/usst_ws/install/lib 
+Requires: 

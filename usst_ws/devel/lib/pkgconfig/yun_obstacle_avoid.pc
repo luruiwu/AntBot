@@ -1,0 +1,8 @@
+prefix=/home/pepper/usst_ws/devel
+
+Name: yun_obstacle_avoid
+Description: Description of yun_obstacle_avoid
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/pepper/usst_ws/devel/lib 
+Requires: 
