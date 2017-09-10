@@ -1,0 +1,8 @@
+prefix=/home/pepper/AntBot/install
+
+Name: antbot_navigation
+Description: Description of antbot_navigation
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/pepper/AntBot/install/lib 
+Requires: actionlib_msgs geometry_msgs

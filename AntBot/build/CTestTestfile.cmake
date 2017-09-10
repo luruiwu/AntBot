@@ -1,0 +1,38 @@
+# CMake generated Testfile for 
+# Source directory: /home/pepper/AntBot/src
+# Build directory: /home/pepper/AntBot/build
+# 
+# This file includes the relevant testing commands required for 
+# testing this directory and lists subdirectories to be tested as well.
+subdirs(gtest)
+subdirs(antbot/antbot)
+subdirs(rbx1/rbx1)
+subdirs(antbot/antbot_bringup_2)
+subdirs(antbot/antbot_gazebo)
+subdirs(antbot/antbot_gmapping)
+subdirs(antbot/antbot_stage)
+subdirs(antbot/antbot_teleop)
+subdirs(rbx1/rbx1_bringup)
+subdirs(rbx1/rbx1_dynamixels)
+subdirs(rbx1/rbx1_speech)
+subdirs(rbx1/rbx1_vision)
+subdirs(yun/sbpl)
+subdirs(antbot/antbot_navigation)
+subdirs(antbot/planner_msgs)
+subdirs(antbot/antbot_bringup)
+subdirs(antbot/antbot_description)
+subdirs(ira_laser_tools)
+subdirs(antbot/purepursuit_planner)
+subdirs(rbx1/rbx1_apps)
+subdirs(rbx1/rbx1_nav)
+subdirs(rbx1/rbx1_description)
+subdirs(yun/relaxed_astar)
+subdirs(yun/sbpl_lattice_planner)
+subdirs(yun/yun)
+subdirs(yun/yun_bringup)
+subdirs(yun/yun_description)
+subdirs(yun/bob_global_planner)
+subdirs(yun/yun_gmapping)
+subdirs(yun/yun_nav)
+subdirs(yun/yun_stage)
+subdirs(yun/yun_teleop)

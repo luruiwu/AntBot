@@ -1,0 +1,8 @@
+prefix=/home/pepper/AntBot/devel
+
+Name: yun_stage
+Description: Description of yun_stage
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/pepper/AntBot/devel/lib 
+Requires: 

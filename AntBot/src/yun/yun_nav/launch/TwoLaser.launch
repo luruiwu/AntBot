@@ -1,0 +1,17 @@
+<launch>
+	<node name="FrontLaser" pkg="urg_node" type="urg_node">
+		<param name="~ip_address" value="192.168.0.10" />
+		<param name="frame_id" value="laser_link" />
+		<param name="~angle_min" type="double" value="-1.91" />
+		<param name="~angle_max" type="double" value="1.91" />
+	</node>
+	<!--
+	<node name="BackLaser" pkg="urg_node" type="urg_node">
+		<param name="~ip_address" value="192.168.0.20" />
+		<param name="frame_id" value="laser_link" />
+		<param name="~angle_min" type="double" value="-1.91" />
+		<param name="~angle_max" type="double" value="1.91" />
+	</node>
+	-->
+	
+</launch>

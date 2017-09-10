@@ -1,0 +1,8 @@
+prefix=/home/pepper/AntBot/devel
+
+Name: antbot_gazebo
+Description: Description of antbot_gazebo
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/pepper/AntBot/devel/lib 
+Requires: 

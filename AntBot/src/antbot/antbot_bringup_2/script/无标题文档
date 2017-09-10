@@ -1,0 +1,21 @@
+1、imu
+读取imu信息，并发布到Imu话题上
+
+2、motor，读取四个轮子的编码器信息，并发布到AGV_Encoder上。
+
+3、odom_publisher，利用imu数据和编码器数据推导出机器人的位置姿态信息。
+
+4、先驱动imu，再驱动motor，再驱动odom_publisher。
+在启动antbot_bringup fake_antbot.launch文件
+
+5、创建地图：
+roslaunch antbot_navigation gmapping
+
+保存地图
+rosrun map_server map_saver -f agv2
+
+6、
+自主导航：
+
+
+

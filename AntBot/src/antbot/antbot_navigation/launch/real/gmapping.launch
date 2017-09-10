@@ -1,0 +1,28 @@
+<launch>    
+	<!-- laser-->
+	<node name="laser_driver" pkg="urg_node" type="urg_node">
+	    <param name="~ip_address" value="192.168.0.10" />
+	    <param name="frame_id"  value="laser_link" />
+	    <param name="~angle_min" type="double" value="-1.91" />
+	    <param name="~angle_max" type="double" value="1.91" />
+	</node>
+	
+	<!--Load the URDF/Xacro model of our robot -->
+	<arg name="urdf_file" default="$(find xacro)/xacro.py $(find antbot_description)/urdf/antbot.urdf.xacro"/>
+	<param name="robot_description" command="$(arg urdf_file)" />
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find antbot_navigation)/rviz/gmapping.rviz"/>
+	
+	<!--　joint_state_publisher节点在话题wheel_joint_states上发布数据-->
+	<arg name="source_list" default="[wheel_joint_states]"/>
+	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+		<rosparam param="source_list" subst_value="True">$(arg source_list)</rosparam>
+		<param name="use_gui" type="Boolean" value="False"/>
+	</node>
+	
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher">
+		<param name="publish_frequency" type="double" value="20.0" />
+	</node>
+	
+	<include file="$(find antbot_navigation)/launch/real/includes/gmapping.launch.xml"/>
+
+</launch>

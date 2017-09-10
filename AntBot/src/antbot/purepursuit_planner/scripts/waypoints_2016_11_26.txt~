@@ -1,0 +1,30 @@
+p0;p0->0.6;2.378;0.001;0.600
+p1;p1->0.6;6.889;-0.043;0.600
+p2;p2->0.6;8.200;2.613;0.600
+p3;p3->0.6;9.833;2.564;0.600
+p4;p4->0.6;14.413;2.068;0.600
+p5;p5->0.6;13.998;-6.751;0.600
+p6;p6->0.6;2.620;-6.397;0.600
+p7;p7->0.6;-4.435;-5.783;0.600
+p8;p8->0.6;-8.205;-5.294;0.600
+p9;p9->0.6;-7.887;3.616;0.600
+p10;p10->0.6;-2.152;3.389;0.600
+p11;p11->0.6;1.020;3.406;0.600
+p12;p12->0.6;1.100;6.106;0.600
+
+
+[ INFO] [1480131022.333109929]: purepursuit_planner_node::MergePath: Point 0 (2.378, 0.001, 0.000) speed = 0.600
+[ INFO] [1480131022.333150083]: purepursuit_planner_node::MergePath: Point 1 (6.889, -0.043, 0.000) speed = 0.600
+[ INFO] [1480131022.333176499]: purepursuit_planner_node::MergePath: Point 2 (8.200, 2.613, 0.000) speed = 0.600
+[ INFO] [1480131022.333193191]: purepursuit_planner_node::MergePath: Point 3 (9.833, 2.564, 0.000) speed = 0.600
+[ INFO] [1480131022.333207858]: purepursuit_planner_node::MergePath: Point 4 (14.413, 2.068, 0.000) speed = 0.600
+[ INFO] [1480131022.333221539]: purepursuit_planner_node::MergePath: Point 5 (13.998, -6.751, 0.000) speed = 0.600
+[ INFO] [1480131022.333234553]: purepursuit_planner_node::MergePath: Point 6 (2.620, -6.397, 0.000) speed = 0.600
+[ INFO] [1480131022.333247499]: purepursuit_planner_node::MergePath: Point 7 (-4.435, -5.783, 0.000) speed = 0.600
+[ INFO] [1480131022.333260468]: purepursuit_planner_node::MergePath: Point 8 (-8.205, -5.294, 0.000) speed = 0.600
+[ INFO] [1480131022.333273673]: purepursuit_planner_node::MergePath: Point 9 (-7.887, 3.616, 0.000) speed = 0.600
+[ INFO] [1480131022.333286425]: purepursuit_planner_node::MergePath: Point 10 (-2.152, 3.389, 0.000) speed = 0.600
+[ INFO] [1480131022.333298728]: purepursuit_planner_node::MergePath: Point 11 (1.020, 3.406, 0.000) speed = 0.600
+[ INFO] [1480131022.333311083]: purepursuit_planner_node::MergePath: Point 12 (1.100, 6.106, 0.000) speed = 0.600
+
+

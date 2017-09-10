@@ -1,0 +1,8 @@
+prefix=/home/pepper/AntBot/devel
+
+Name: antbot_bringup_2
+Description: Description of antbot_bringup_2
+Version: 0.0.0
+Cflags: -I/home/pepper/AntBot/devel/include
+Libs: -L/home/pepper/AntBot/devel/lib 
+Requires: 

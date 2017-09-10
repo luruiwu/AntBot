@@ -1,0 +1,92 @@
+创建地图:
+1、启动底盘
+roslaunch turtlebot_bringup minimal.launch
+
+#融合两个激光雷达
+#roslaunch ira_laser_tools laserscan_multi_merger.launch
+
+2、启动gmapping
+roslaunch turtlebot_navigation gmapping_demo.launch
+
+3、用rviz查看地图
+roslaunch turtlebot_rviz_launchers view_navigation.launch
+
+4、遥控
+roslaunch turtlebot_teleop keyboard_teleop.launch
+
+5、保存地图
+rosrun map_server map_saver -f /home/pepper/my_map
+
+
+自主导航:
+1、启动底盘
+roslaunch turtlebot_bringup minimal.launch
+
+2、开启amcl定位，并指定地图
+roslaunch turtlebot_navigation amcl_demo.launch map_file:=/home/pepper/my_map.yaml
+
+3、启动自主导航
+roslaunch turtlebot_rviz_launchers view_navigation.launch
+
+
+
+#配置urdf两个激光雷达
+<joint name="laser1" type="fixed">
+	<origin xyz="0 -0.06 0" rpy="0 0 -2.3561925"/>
+	<parent link="multi_lidar_link"/>
+	<child link="lidar1_link"/>
+</joint>
+<link name="lidar1_link">
+	<visual>
+		<geometry>
+			<box size="0.00 005 0.06"/>
+		</geometry>
+		<material name="Green"/>
+	</visual>
+		<inertial>
+			<mass value="0.000001" />
+				<origin xyz="0 0 0" />
+		<inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001" />
+		</inertial>
+</link>
+
+<joint name="laser2" type="fixed">
+	<origin xyz="0 0.06 0" rpy="0 0 0.7853975"/>
+		<parent link="multi_lidar_link"/>
+		<child link="lidar2_link"/>
+</joint>
+<link name="lidar2_link">
+	<visual>
+		<geometry>
+			<box size="0.00 005 0.06"/>
+		</geometry>
+		<material name="Green"/>
+	</visual><inertial>
+		<mass value="0.000001" />
+			<origin xyz="0 0 0" />
+		<inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001" />
+		</inertial>
+</link>
+
+<!-- multi_merger-->
+<joint name="multi_merger" type="fixed">
+	<origin xyz="-0.005 0.00 0.360" rpy="0 0 0"/>
+		<parent link="base_link"/>
+		<child link="multi_lidar_link"/>
+</joint>
+<link name="multi_lidar_link">
+	<visual>
+		<geometry>
+			<box size="0.00 005 0.06"/>
+		</geometry>
+			<material name="Green"/>
+	</visual>
+		<inertial>
+			<mass value="0.000001" />
+				<origin xyz="0 0 0" />
+		<inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001" />
+		</inertial>
+</link>
+
+
+

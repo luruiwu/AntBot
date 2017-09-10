@@ -1,0 +1,8 @@
+prefix=/home/pepper/AntBot/devel
+
+Name: sbpl_lattice_planner
+Description: Description of sbpl_lattice_planner
+Version: 0.1.11
+Cflags: -I/home/pepper/AntBot/devel/include -I/home/pepper/AntBot/src/yun/sbpl_lattice_planner/include
+Libs: -L/home/pepper/AntBot/devel/lib 
+Requires: message_runtime geometry_msgs

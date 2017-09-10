@@ -1,0 +1,8 @@
+<launch>
+	<node name="imu5220_publisher" pkg="antbot_bringup_2" type="imu5220_publisher.py"/>
+	
+	<node name="motor_6" pkg="antbot_bringup_2" type="motor_6.py"/>
+	
+	<node name="odom_publiser_6" pkg="antbot_bringup_2" type="odom_publiser_6.py"/>
+
+</launch>

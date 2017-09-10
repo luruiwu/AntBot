@@ -1,0 +1,35 @@
+<launch>
+	<arg name="world_file" default=" $(find yun_stage)/maps/stage/maze.world"/>
+	<param name="/use_sim_time" value="true"/>
+	<!--***********************Stage_ros***********************-->
+  <node pkg="stage_ros" type="stageros" name="stageros" args="$(arg world_file)">
+   <param name="base_watchdog_timeout" value="0.5"/>
+    <remap from="odom" to="odom"/>
+    <remap from="base_scan" to="scan"/>
+  </node>
+
+  <!-- ***********************Robot Model***********************-->
+  	<arg name="urdf_file" default="$(find xacro)/xacro.py $(find yun_description)/urdf/yun.urdf.xacro"/>
+	<param name="robot_description" command="$(arg urdf_file)" />
+	
+	<!--node name="rviz" pkg="rviz" type="rviz" args="-d $(find yun_description)/launch/yun_demo.rviz" required="true" /-->
+	<arg name="source_list" default="[wheel_joint_states]"/>
+	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+		<rosparam param="source_list" subst_value="True">$(arg source_list)</rosparam>
+		<param name="use_gui" type="Boolean" value="False"/>
+	</node>
+	<!--  The package takes the joint angles of the robot as input and publishes the 3D poses of the robot links-->
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+	
+  <!-- ***********************Move base ***********************-->
+  <include file="$(find yun_nav)/launch/includes/move_base.launch.xml"/>
+  
+  <!-- ***********************Gmapping***********************-->
+  <include file="$(find yun_gmapping)/launch/includes/gmapping.launch.xml"/>
+  
+  <!-- ***********************Gmapping***********************-->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find yun_gmapping)/yun_demo.rviz"/>
+
+</launch>
+
+

@@ -1,0 +1,8 @@
+prefix=/home/pepper/AntBot/install
+
+Name: planner_msgs
+Description: Description of planner_msgs
+Version: 0.1.0
+Cflags: -I/home/pepper/AntBot/install/include
+Libs: -L/home/pepper/AntBot/install/lib 
+Requires: roscpp actionlib nav_msgs roscpp std_msgs actionlib_msgs geometry_msgs

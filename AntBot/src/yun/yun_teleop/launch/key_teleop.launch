@@ -1,0 +1,5 @@
+<launch>
+	<node pkg="yun_teleop" type="yun_teleop_key" name="yun_teleop_key" output="screen">
+		<remap from="cmd_vel" to="/smooth_cmd_vel"/>
+	</node>
+</launch>

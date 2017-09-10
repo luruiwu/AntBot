@@ -1,0 +1,34 @@
+<launch>
+	<param name="/use_sim_time" value="false"/>
+	
+	<!--Load the URDF/Xacro model of our robot -->
+	<arg name="urdf_file" default="$(find xacro)/xacro.py $(find antbot_description)/urdf/antbot.urdf.xacro"/>
+	<param name="robot_description" command="$(arg urdf_file)" />
+	
+	<arg name="source_list" default="[wheel_joint_states]"/>
+	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+		<rosparam param="source_list" subst_value="True">$(arg source_list)</rosparam>
+		<param name="use_gui" type="Boolean" value="False"/>
+	</node>
+	
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher">
+		<param name="publish_frequency" type="double" value="20.0" />
+	</node>
+	
+	<node pkg="antbot_bringup" type="fake_base_controller.py" name="fake_base_controller" output="screen"/>
+
+	<node pkg="antbot_bringup" type="odom_publisher" name="odom_publisher" output="screen"/>
+	
+	<node pkg="antbot_bringup" type="odom_publisher" name="odom_publisher" output="screen"/>
+
+</launch>
+
+
+
+
+
+
+
+
+
+

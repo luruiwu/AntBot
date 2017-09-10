@@ -1,0 +1,10 @@
+1,ModeBus
+    将数组加CRC校验并返回字符串消息
+2，MotorSpeedvHandler
+    计算电机的速度与机器人行进速度的关系 机器人速度分解的方程所在
+3，merial
+    串口驱动文件
+4，mType
+    将两个字节的数据转化成signed short类型，或这就爱那个short类型转化成两个字符
+5, motor_drvier
+    驱动电机

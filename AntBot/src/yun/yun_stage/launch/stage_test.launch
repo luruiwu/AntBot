@@ -1,0 +1,12 @@
+<launch>
+  <arg name="world_file" default=" $(find yun_stage)/maps/stage/maze_lasers.world"/>
+  <arg name="map_file" default=" $(find yun_stage)/maps/yun_3_3.yaml"/>
+ 
+  <node pkg="stage_ros" type="stageros" name="stageros" args="$(arg world_file)">
+   <param name="base_watchdog_timeout" value="0.5"/>
+    <remap from="odom" to="odom"/>
+    <remap from="base_scan" to="scan"/>
+    <remap from="/cmd_vel" to="/smooth_cmd_vel"/>
+  </node>
+
+</launch>

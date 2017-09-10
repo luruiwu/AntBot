@@ -1,0 +1,37 @@
+<launch>
+   	<param name="/use_sim_time" value="false"/>
+   	
+	<node pkg="antbot_bringup" type="motor_drvier.py" name="motor_drvier" output="screen"/>
+ 	
+	<node pkg="antbot_bringup" type="encoder_driver.py" name="encoder_driver" output="screen"/>
+ 	
+	<node pkg="antbot_bringup" type="rawimu5220_publisher.py" name="rawimu5220_publisher" output="screen"/>
+ 		
+	<!--Load the URDF/Xacro model of our robot -->
+	<arg name="urdf_file" default="$(find xacro)/xacro.py $(find antbot_description)/urdf/antbot.urdf.xacro"/>
+	<param name="robot_description" command="$(arg urdf_file)" />
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find antbot_description)/launch/antbot_demo.rviz" required="true" />
+	
+	<arg name="source_list" default="[wheel_joint_states]"/>
+	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+		<rosparam param="source_list" subst_value="True">$(arg source_list)</rosparam>
+		<param name="use_gui" type="Boolean" value="False"/>
+	</node>
+	
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher">
+		<param name="publish_frequency" type="double" value="20.0" />
+	</node>
+	
+	<node pkg="antbot_bringup" type="odom_publiser.py" name="odom_publiser"/>
+
+</launch>
+
+
+
+
+
+
+
+
+
+

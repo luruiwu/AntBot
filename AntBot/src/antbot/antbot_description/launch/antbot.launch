@@ -1,0 +1,6 @@
+<launch>
+	<param name="antbot_description" command="$(find xacro)/xacro.py $(find antbot_description)/urdf/antbot.urdf.xacro"/>
+	
+	<node name="spawn_antbot" pkg="gazebo" type="spawn_model" args="-urdf -param antbot_description -z 0.01 -model antbot_model" respawn="false" output="screen"/>
+
+</launch>

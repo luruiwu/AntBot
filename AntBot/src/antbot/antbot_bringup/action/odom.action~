@@ -1,0 +1,9 @@
+#goal definition
+float32 distance
+---
+#result definition
+float32 distance
+---
+#feesback
+float32 distance
+

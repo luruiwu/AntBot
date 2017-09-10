@@ -1,0 +1,11 @@
+<launch>
+	
+	<node name="imu5220_publisher" pkg="yun_bringup" type="imu5220_publisher.py"/>
+	
+	<node name="motor_6" pkg="yun_bringup" type="motor_6.py">
+		<remap from="/cmd_vel" to="/smooth_cmd_vel"/>
+	</node>
+	
+	<node name="odom_publiser_6" pkg="yun_bringup" type="odom_publiser_6.py"/>
+	
+</launch>

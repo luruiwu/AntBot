@@ -1,0 +1,2 @@
+float32 speed                   #期望的线性速度(m/s)
+float32 steering_r              #期望的旋转半径

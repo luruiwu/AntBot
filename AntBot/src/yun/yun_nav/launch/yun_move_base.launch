@@ -1,0 +1,72 @@
+<!-- 
+  Yun navigation simulation:
+  - stage
+  - map_server
+  - move_base
+  - static map
+  - amcl
+  - rviz view
+ -->
+<launch>
+  <arg name="initial_pose_x" default="0.0"/>
+  <arg name="initial_pose_y" default="0.0"/>
+  <arg name="initial_pose_a" default="0.0"/>
+  <arg name="map_file" default=" $(find yun_nav)/maps/yun.yaml"/>
+  <param name="/use_sim_time" value="false"/><!--没有会出现TF错误-->
+  
+  <!-- ***********************Robot Model***********************-->
+  	<arg name="urdf_file" default="$(find xacro)/xacro.py $(find yun_description)/urdf/yun.urdf.xacro"/>
+	<param name="robot_description" command="$(arg urdf_file)" />
+	
+	<!--node name="rviz" pkg="rviz" type="rviz" args="-d $(find yun_description)/launch/yun_demo.rviz" required="true" /-->
+	<arg name="source_list" default="[wheel_joint_states]"/>
+	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+		<rosparam param="source_list" subst_value="True">$(arg source_list)</rosparam>
+		<param name="use_gui" type="Boolean" value="False"/>
+	</node>
+	<!--  The package takes the joint angles of the robot as input and publishes the 3D poses of the robot links-->
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+
+  <!--  ************** Navigation  ***************  -->
+  <include file="$(find yun_nav)/launch/includes/real_move_base.launch.xml"/>
+
+  <!--  ****** Maps *****  -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)">
+    <param name="frame_id" value="/map"/>
+  </node>
+
+<!--  **************** Amcl ****************  -->
+	<!--laser -->
+	<node name="laser_driver" pkg="urg_node" type="urg_node">
+		<param name="~ip_address" value="192.168.0.10" />
+		<param name="frame_id" value="laser_link" />
+		<param name="~angle_min" type="double" value="-1.91" />
+		<param name="~angle_max" type="double" value="1.91" />
+	</node>
+	
+  <include file="$(find yun_nav)/launch/includes/amcl/amcl.launch.xml">
+    <arg name="scan_topic" value="scan"/>
+    <arg name="use_map_topic" value="true"/>
+    <arg name="initial_pose_x" value="$(arg initial_pose_x)"/>
+    <arg name="initial_pose_y" value="$(arg initial_pose_y)"/>
+    <arg name="initial_pose_a" value="$(arg initial_pose_a)"/>
+  </include>
+
+  <!--  **************** Visualisation ****************  -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find yun_nav)/rviz/nav.rviz"/>
+  
+  <!--  **************** yocs_velocity_smoother ****************  -->
+  <include file="$(find yun_bringup)/launch/includes/real_velocity_smoother.launch.xml"/>
+  
+</launch>
+
+
+
+
+
+
+
+
+
+
+

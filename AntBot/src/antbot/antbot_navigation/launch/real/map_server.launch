@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<launch>
+  	<param name="/use_sim_time" value="true"/>
+	
+	<!--Load the URDF/Xacro model of our robot -->
+	<arg name="urdf_file" default="$(find xacro)/xacro.py $(find antbot_description)/urdf/antbot.urdf.xacro"/>
+	<param name="robot_description" command="$(arg urdf_file)" />
+	
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find antbot_description)/launch/antbot_demo.rviz" required="true" />
+	
+	<!--　joint_state_publisher节点在话题wheel_joint_states上发布数据-->
+	<arg name="source_list" default="[wheel_joint_states]"/>
+	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+		<rosparam param="source_list" subst_value="True">$(arg source_list)</rosparam>
+		<param name="use_gui" type="Boolean" value="False"/>
+	</node>
+	
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher">
+		<param name="publish_frequency" type="double" value="20.0" />
+	</node>
+	
+  <!-- Run the map server -->
+  <!-- rosrun map_server map_server -->
+  <arg name="map" default="agv2" />
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find antbot_navigation)/maps/$(arg map).yaml"/>
+  
+  <!-- Run a static transform between /odom and /map -->
+  <node pkg="tf" type="static_transform_publisher" name="odom_map_broadcaster" args="0 0 0 0 0 0 /odom /map 100"/>
+
+</launch>
+

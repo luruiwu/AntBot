@@ -1,0 +1,60 @@
+真实的机器人自主导航启动步骤
+
+1、rosrun antbot_bringup_2 imu5220_publisher.py
+
+
+2、rosrun antbot_bringup_2 motor_6.py
+
+
+3、rosrun antbot_bringup_2 odom_publiser_6.py
+
+
+4、roslaunch antbot_navigation map_server_2.launch
+
+
+5、roslaunch antbot_navigation amcl.launch
+
+
+6、roslaunch purepursuit_planner purepursuit.launch
+
+
+7、roslaunch p urepursuit_planner purepursuit_marker.launch
+
+
+roslaunch antbot_teleop incremental_teleop.launch
+
+
+创建地图步骤：
+1、roslaunch antbot_navigation gmapping.launch
+
+2、rosrun map_server map_saver -f 
+
+
+
+
+
+
+虚拟机器人启动：
+
+1、
+roslaunch antbot_bringup fake_antbot_without_rviz.launch 
+
+2、
+roslaunch antbot_navigation map_server_2.launch
+
+3、
+roslaunch purepursuit_planner purepursuit.launch
+
+4、
+roslaunch purepursuit_planner purepursuit_marker.launch
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,6 @@
+set(purepursuit_planner_SETUP_PY_VERSION "0.1.0")
+set(purepursuit_planner_SETUP_PY_SCRIPTS "")
+set(purepursuit_planner_SETUP_PY_PACKAGES "purepursuit_planner")
+set(purepursuit_planner_SETUP_PY_PACKAGE_DIRS "scripts/purepursuit_planner")
+set(purepursuit_planner_SETUP_PY_MODULES "")
+set(purepursuit_planner_SETUP_PY_MODULE_DIRS "")

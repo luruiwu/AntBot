@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<launch>
+
+<!-- start purepursuit node -->
+    <node pkg="purepursuit_planner" type="purepursuit_planner_node" name="purepursuit_planner" output="screen">
+        <param name="position_source" value="MAP" type="string"/>
+        <param name="d_lookahear_min" value="0.4"/>
+        <param name="kr" value="0.2"/>
+        <param name="desired_freq" value="20.0"/>
+        <param name="odom_topic" value="/robot_0/odom"/>
+        <param name="cmd_topic_vel" value="/robot_0/cmd_vel"/>
+        <param name="base_link_topic" value="/robot_0/base_link"/>
+        <param name="laser_topic" value="/robot_0/base_scan"/>
+    </node>
+
+</launch>
+

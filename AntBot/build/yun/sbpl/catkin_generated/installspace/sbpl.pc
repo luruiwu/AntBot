@@ -1,0 +1,8 @@
+prefix=/home/pepper/AntBot/install
+
+Name: sbpl
+Description: Description of sbpl
+Version: 0.0.0
+Cflags: -I/home/pepper/AntBot/install/include
+Libs: -L/home/pepper/AntBot/install/lib -lsbpl
+Requires: 

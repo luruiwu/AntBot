@@ -1,0 +1,8 @@
+prefix=/home/pepper/AntBot/devel
+
+Name: purepursuit_planner
+Description: Description of purepursuit_planner
+Version: 0.1.0
+Cflags: -I/home/pepper/AntBot/src/antbot/purepursuit_planner/include
+Libs: -L/home/pepper/AntBot/devel/lib 
+Requires: roscpp actionlib nav_msgs roscpp std_msgs tf actionlib_msgs geometry_msgs planner_msgs

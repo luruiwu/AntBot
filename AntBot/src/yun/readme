@@ -1,0 +1,17 @@
+yun软件包是另外开发的一种机器人导航软件，基于move_base的navigation stack开发，不同于前面的antbot是基于agvs开发。
+
+
+1、yun_nav中由两种move_base的配置，分别针对两种全局路径规划的算法。
+sbpl中的是sbpl规划器的配置，param根目录下的是global_planner/GlobalPlanner的配置；
+两种切换的方式是需要修改yun_stage软件包下面的yun_stage.launch文件中的move_base启动文件。
+
+
+2、虚拟的机器人启动文件均为stage的launch文件中，通过stage进行仿真。
+
+
+3、sbpl和sbpl_lattice_planner是abpl全局路径规划器的包。
+
+
+4、
+
+

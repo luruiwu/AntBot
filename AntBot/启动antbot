@@ -1,0 +1,57 @@
+启动antbot的stage仿真
+amcl仿真
+１、roslaunch antbot_stage stage.launch
+２、roslaunch antbot_navigation fake_amcl.launch
+３、roslaunch antbot_navigation fake_map_server.launch
+４、roslaunch purepursuit_planner purepursuit.launch
+５、roslaunch purepursuit_planner purepursuit_marker.launch
+
+创建地图
+１、roslaunch antbot_stage stage.launch
+２、roslaunch antbot_gmapping stage_gmapping.launch
+３、roslaunch antbot_teleop key_teleop.launch
+４、rosrun map_server map_saver -f ~/stage
+５、rm -f ~/stage.*
+
+
+antbot的move_base仿真
+1、
+roslaunch antbot_bringup fake_antbot.launch
+
+2、
+roslaunch antbot_navigation fake_move_base_map_with_obstacles.launch
+
+3、
+rosrun rviz rviz -d `rospack find antbot_navigation`/rviz/nav_obstacles.rviz
+
+
+根据AGVS编写的AGV的手动规划路径的程序
+
+１、启动机器人的仿真系统
+roslaunch antbot_bringup fake_antbot.launch
+
+２、启动地图服务
+roslaunch antbot_navigation map_server.launch
+
+３、启动路径规划程序
+roslaunch purepursuit_planner purepursuit.launch
+
+４、启动客户端的规划程序
+roslaunch purepursuit_planner purepursuit_marker.launch 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

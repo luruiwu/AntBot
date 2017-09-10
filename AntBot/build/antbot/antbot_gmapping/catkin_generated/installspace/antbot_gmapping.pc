@@ -1,0 +1,8 @@
+prefix=/home/pepper/AntBot/install
+
+Name: antbot_gmapping
+Description: Description of antbot_gmapping
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/pepper/AntBot/install/lib 
+Requires: 

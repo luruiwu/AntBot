@@ -1,0 +1,82 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+#电机的直接驱动文件 接受cmdvel信息 发送给电机 并获得所有电机的速度 合成之后 发布到car_speed话题上
+#
+
+
+import roslib; roslib.load_manifest('antbot_bringup') 
+import rospy
+#添加上层目录为搜索路径
+import sys
+sys.path.append("..")
+import tf.transformations
+from geometry_msgs.msg import Twist 
+from math import sqrt, atan2
+import thread
+from antbot.msg import Num, carOdom,MImu
+from MotorDriver.mserial import MSerialPort
+import MotorDriver.MotorSpeedvHandler
+import MotorDriver.Motor
+import MotorDriver.mType
+
+
+#是否是测试模式　是否真正给电机发送数据
+#定义全局角度
+ANGLE_Z=0.0
+#定义全局角速度
+ANGULAR_Z=0.0
+#定义全局是否接受到角速度的bool变量
+isReceiveImu=False
+
+
+serialport=rospy.get_param("~serial_port",'/dev/ttyUSBEncoder')
+baundrate=rospy.get_param("~serial_baudrate",115200)
+timeout=rospy.get_param("~timeout",0.2)
+mSerial=MSerialPort(serialport,baundrate,timeout)
+
+
+#在 	/rawImu_message 话题上监听原始imu消息
+def imuCallback(msg):
+	global ANGLE_Z
+	global ANGULAR_Z
+	global isReceiveImu
+	ANGLE_Z=msg.angle_z
+	ANGULAR_Z=msg.angular_z
+	Odom=GetOdom()
+	car_speed.xOdom=Odom[0]
+	car_speed.yOdom=Odom[1]
+	car_speed.vth=ANGULAR_Z
+	car_speed.angle_z=ANGLE_Z
+	pub.publish(car_speed)
+
+
+rospy.init_node('robotEncoder_driver',anonymous=True)
+pub = rospy.Publisher('car_speed',carOdom,queue_size=30)
+rospy.Subscriber("/rawImu_message",MImu,imuCallback)
+car_speed = carOdom()
+
+
+#获取编码器的值
+rateCount=0
+def GetOdom():
+	global rateCount
+	arr=[0xfe,0xef]
+	str1=MotorDriver.Motor.arrToStr(arr)
+	#MotorDriver.mType.print16(str1)
+	mSerial.send(str1)
+	#read the ack message
+	arr1=mSerial.read(5)
+	if arr1[0]=='#':
+		XOdom=MotorDriver.mType.TwoBytes_ToUnShort(arr1[1],arr1[2])
+		YOdom=MotorDriver.mType.TwoBytes_ToUnShort(arr1[3],arr1[4])
+	return XOdom,YOdom
+#16 print 
+def print16(arr):
+	for i in arr:
+		print('%#x'%ord(i))
+#-----------------------------------------------------------
+#-----------------------------------------------------------
+		
+if __name__ == '__main__':
+	rospy.spin()

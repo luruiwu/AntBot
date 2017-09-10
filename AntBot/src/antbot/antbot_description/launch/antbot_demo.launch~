@@ -1,0 +1,25 @@
+<launch>
+
+	<arg name="urdf_file" default="$(find xacro)/xacro.py $(find antbot_description)/urdf/antbot.urdf.xacro"/>
+	<param name="robot_description" command="$(arg urdf_file)" />
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find antbot_description)/antbot.rviz" required="true" />
+	
+	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
+	
+	<!--  The package takes the joint angles of the robot as input and publishes the 3D poses of the robot links-->
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+	
+
+</launch>
+
+
+
+
+
+
+
+
+
+
+
+
